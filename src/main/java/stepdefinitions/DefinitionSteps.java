@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import dto.ResultDTO;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import manager.PageFactoryManager;
@@ -23,6 +24,7 @@ public class DefinitionSteps {
     SportPage sportPage;
     MachPage machPage;
     Map<String, String> map = new HashMap<>();
+    ResultDTO dto;
 
 
     @Before
@@ -36,6 +38,8 @@ public class DefinitionSteps {
         searchPage = pageFactoryManager.getSearchPage();
         sportPage = pageFactoryManager.getSportPage();
         machPage = pageFactoryManager.getMachPage();
+        dto = new ResultDTO();
+
     }
 
     @And("User opens {string} page")
@@ -261,10 +265,18 @@ public class DefinitionSteps {
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstLeftCommand());
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstRightCommand());
 
-        String firstMach =
-                sportPage.getNameFirstLeftCommand() + "." + sportPage.getScoreFirstLeftCommand()+ "."
-                        +sportPage.getScoreFirstRightCommand()+ "." +sportPage.getNameFirstRightCommand();
-        map.put("firstMach", firstMach);
+
+        dto.setLeftComandScore(sportPage.getScoreFirstLeftCommand());
+        dto.setLeftComandName(sportPage.getNameFirstLeftCommand());
+        dto.setRightComandName(sportPage.getNameFirstRightCommand());
+        dto.setRightComandScore(sportPage.getScoreFirstRightCommand());
+
+//        String firstMach =
+//                sportPage.getNameFirstLeftCommand() + "." + sportPage.getScoreFirstLeftCommand()+ "."
+//                        +sportPage.getScoreFirstRightCommand()+ "." +sportPage.getNameFirstRightCommand();
+//        map.put("firstMach", firstMach);
+
+
     }
 
     @And("User click on first match")
@@ -277,10 +289,20 @@ public class DefinitionSteps {
     @And("User verify name of commands and scores")
     public void userVerifyNameOfCommandsAndScores() {
         machPage.implicitWaiater(DEFAULT_TIMEOUT);
-        String namesCommandAndScoresOfMach =
-                machPage.getNameLeftCommand() +"."+ machPage.getScoreLeftCommand()+"."
-                        +machPage.getScoreRightCommand()+"."+machPage.getNameRightCommand();
-        map.put("namesCommandAndScoresOfMachFromMachPage", namesCommandAndScoresOfMach);
-        assertEquals(map.get("firstMach"), map.get("namesCommandAndScoresOfMachFromMachPage"));
+
+        assertEquals(dto.getLeftComandScore(), machPage.getScoreLeftCommand());
+        assertEquals(dto.getLeftComandName(), machPage.getNameLeftCommand());
+        assertEquals(dto.getRightComandName(), machPage.getNameRightCommand());
+        assertEquals(dto.getRightComandScore(), machPage.getScoreRightCommand());
+
+
+
+
+
+//        String namesCommandAndScoresOfMach =
+//                machPage.getNameLeftCommand() +"."+ machPage.getScoreLeftCommand()+"."
+//                        +machPage.getScoreRightCommand()+"."+machPage.getNameRightCommand();
+//        map.put("namesCommandAndScoresOfMachFromMachPage", namesCommandAndScoresOfMach);
+//        assertEquals(map.get("firstMach"), map.get("namesCommandAndScoresOfMachFromMachPage"));
     }
 }
