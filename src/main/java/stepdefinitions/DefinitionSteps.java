@@ -45,7 +45,7 @@ public class DefinitionSteps {
 
     @And("user click button consent")
     public void userClickButtonConsent() {
-        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        homePage.implicitWaiater(DEFAULT_TIMEOUT);
         homePage.clickOnButtonConsent();
     }
 
@@ -146,38 +146,38 @@ public class DefinitionSteps {
 
     @And("User click on button Sport")
     public void userClickOnButtonSport() {
-        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        homePage.implicitWaiater(DEFAULT_TIMEOUT);
         homePage.clickOnButtonSportOnHeader();
 
     }
 
     @And("User click on button Football")
     public void userClickOnButtonFootball() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.clickOnButtonFootball();
     }
 
     @And("User click on button Scores & Fixtures")
     public void userClickOnButtonScoresFixtures() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.clickOnButtonScoresAndFixtures();
     }
 
     @And("User click on search bar on sport page")
     public void userClickOnSearchBarOnSportPage() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.clickOnSearchBar();
     }
 
     @And("User put {string} in search bar")
     public void userPutKeyInSearchBar(String key) {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.putKeyInSearchBar(key);
     }
 
     @And("User select and click on search world")
     public void userSelectAndClickOnSearchWorld() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.getSelectResults());
 
         sportPage.clickOnSelectResults();
@@ -185,7 +185,7 @@ public class DefinitionSteps {
 
     @And("User click on January 2021")
     public void userClickOnJanuary() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.clickOnResultsJanuary2021();
     }
 
@@ -257,7 +257,7 @@ public class DefinitionSteps {
 
     @And("User store first match")
     public void userStoreFirstMatch() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstLeftCommand());
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstRightCommand());
 
@@ -269,14 +269,14 @@ public class DefinitionSteps {
 
     @And("User click on first match")
     public void userClickOnFirstMatch() {
-        sportPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        sportPage.implicitWaiater(DEFAULT_TIMEOUT);
         sportPage.clickNameFirstLeftCommand();
     }
 
 
     @And("User verify name of commands and scores")
     public void userVerifyNameOfCommandsAndScores() {
-        machPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        machPage.implicitWaiater(DEFAULT_TIMEOUT);
         String namesCommandAndScoresOfMach =
                 machPage.getNameLeftCommand() +"."+ machPage.getScoreLeftCommand()+"."
                         +machPage.getScoreRightCommand()+"."+machPage.getNameRightCommand();

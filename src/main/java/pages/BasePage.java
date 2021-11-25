@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -32,6 +33,10 @@ public class BasePage {
     public void waitVisibilityOfElement(long timeToWait, WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, timeToWait);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void implicitWaiater(long timeToWait){
+        driver.manage().timeouts().implicitlyWait(timeToWait, TimeUnit.SECONDS);
     }
 
 }
