@@ -261,8 +261,9 @@ public class DefinitionSteps {
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstLeftCommand());
         sportPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, sportPage.nameFirstRightCommand());
 
-        String firstMach = sportPage.getNameFirstLeftCommand()
-                + "." + sportPage.getScoreFirstLeftCommand();
+        String firstMach =
+                sportPage.getNameFirstLeftCommand() + "." + sportPage.getScoreFirstLeftCommand()+ "."
+                        +sportPage.getScoreFirstRightCommand()+ "." +sportPage.getNameFirstRightCommand();
         map.put("firstMach", firstMach);
     }
 
@@ -276,8 +277,9 @@ public class DefinitionSteps {
     @And("User verify name of commands and scores")
     public void userVerifyNameOfCommandsAndScores() {
         machPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-        String namesCommandAndScoresOfMach = machPage.getNameLeftCommand()
-                +"."+ machPage.getScoreLeftCommand();
+        String namesCommandAndScoresOfMach =
+                machPage.getNameLeftCommand() +"."+ machPage.getScoreLeftCommand()+"."
+                        +machPage.getScoreRightCommand()+"."+machPage.getNameRightCommand();
         map.put("namesCommandAndScoresOfMachFromMachPage", namesCommandAndScoresOfMach);
         assertEquals(map.get("firstMach"), map.get("namesCommandAndScoresOfMachFromMachPage"));
     }
